@@ -73,8 +73,9 @@ def diagnose_domain(domain: str) -> None:
     print(f"🌐 HTTPS по домену → {https_result}")
 
     # 4️⃣ HTTPS напрямую по IP
-    ip_https_result = check_https_via_ip(ip_address, domain)
-    print(f"🧪 HTTPS через IP → {ip_https_result}")
+    if https_result != 200:
+        ip_https_result = check_https_via_ip(ip_address, domain)
+        print(f"🧪 HTTPS через IP → {ip_https_result}")
 
     # 5️⃣ Простейшая интерпретация
     print("📊 Диагноз:")
