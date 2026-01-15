@@ -42,19 +42,19 @@ def check_https(
 
     except requests.exceptions.ConnectTimeout:
         # Сервер не ответил вовремя
-        return "Timeout / DPI / провайдер"
+        return "Timeout"
 
     except requests.exceptions.SSLError:
         # Часто бывает при:
         # - SNI-блокировке
         # - подмене сертификатов провайдером
-        return "SSL error / SNI / TLS-блок"
+        return "SSL error"
 
     except requests.exceptions.ConnectionError:
         # Ошибка соединения:
         # - TCP reset
         # - фильтрация провайдером
-        return "Connection error / TCP-фильтр"
+        return "Connection error"
 
     except Exception:
         # Любая другая непредвиденная ошибка
