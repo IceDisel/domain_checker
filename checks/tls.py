@@ -8,9 +8,13 @@ tls.py
 - DNS-блокировок
 - SNI-фильтрации
 """
+import warnings
+from urllib3.exceptions import InsecureRequestWarning
 
 import requests
 from typing import Optional
+
+warnings.simplefilter("ignore", InsecureRequestWarning)
 
 
 def check_https_via_ip(
